@@ -1,0 +1,9 @@
+탭 안에 Grid가 2개 있을때 위에있는 것만 바인딩 되고, 하단의 Grid는 전체선택 체크해도 연동이 안됨 
+
+그래서 하단에 있는 곳에다 추가로 Mode 및 UpdateSourceTrigger 추가해줌 
+
+상단 Grid
+<CheckBox IsChecked="{Binding DataContext.AllChecked, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}" />
+
+하단 Grid
+<CheckBox IsChecked="{Binding DataContext.OrderListAllChk, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid},Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
