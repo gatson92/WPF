@@ -1,0 +1,8 @@
+return  : RelativeSource={RelativeSource Self}}
+
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="ScrollChanged">
+                                        <i:InvokeCommandAction Command="{Binding ScrollCommand }"
+                                                               CommandParameter="{Binding , ElementName=stsv}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
