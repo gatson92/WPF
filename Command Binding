@@ -1,0 +1,17 @@
+	1. event 시 Command Binding 
+		a. Default
+		<i:Interaction.Triggers>
+			<i:EventTrigger EventName="ScrollChanged">
+				<i:InvokeCommandAction 
+					Command="{Binding ScrollCommand }"
+					CommandParameter="{Binding Content,ElementName=stsv}"/>
+			</i:EventTrigger>
+		</i:Interaction.Triggers>								
+		
+		b. Get EventArgs (    xmlns:cmd="http://www.galasoft.ch/mvvmlight"  )
+		<i:Interaction.Triggers>
+			<i:EventTrigger EventName="ScrollChanged">
+				<cmd:EventToCommand Command="{Binding ScrollCommand }" PassEventArgsToCommand="True"/>
+			</i:EventTrigger>
+		</i:Interaction.Triggers>		
+		
