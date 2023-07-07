@@ -1,0 +1,16 @@
+var tmp = ((DataView)EcomMallOrderMst_DataGrid2.ItemsSource).ToTable().AsEnumerable().ToList();
+
+                for (int i = 0; i < tmp.Count; i++)
+                {
+                    tmp[i].ItemArray[i] = 1;
+                }
+
+                tmp.ForEach(x => x.ItemArray[0] = "1");
+
+                EcomMallOrderMst_DataGrid2.ItemsSource = tmp.CopyToDataTable().AsDataView();
+
+
+
+
+
+https://docs.microsoft.com/en-us/answers/questions/542029/convert-datagriditemssource-to-datatable-and-trans.html
