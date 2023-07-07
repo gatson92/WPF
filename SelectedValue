@@ -1,0 +1,54 @@
+view 
+SelectedIndex="0"
+                            IsSynchronizedWithCurrentItem="True" 
+                            ItemsSource="{Binding Path=EcomOrderStatusCombo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                            SelectedValue="{Binding OrderStatusSelectedValue, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+
+vm  
+private List<string> _ecomOrderStatusCombo;
+private string _orderSelectedValue = "";
+
+
+/// <summary>
+        /// 이커머스 주문상태 콤보박스 
+        /// </summary>
+        public List<string> EcomOrderStatusCombo
+        {
+            get => _ecomOrderStatusCombo;
+            set
+            {
+                _ecomOrderStatusCombo = value;
+                FirePropertyChanged();
+            }
+        }
+
+
+        /// <summary>
+        /// 처리상태 선택된 Item
+        /// </summary>
+        public string OrderStatusSelectedValue
+        {
+            get => _orderStatusSelectedValue;
+            set
+            {
+                _orderStatusSelectedValue = value;
+                FirePropertyChanged();
+            }
+        }
+
+
+// 초기값 셋팅 
+EcomOrderStatusCombo = SearchItem.EcomOrderStatusCombo.AsEnumerable().Where(x => x.Field<string>("COM_CD") != orderRegStaus).Select(x => x.Field<string>("COM_NM")).ToList();
+                SearchItem.EcomOrderStatus = "";
+                OrderStatusSelectedValue = "전체";
+                SearchItem.Gubun = "02";
+
+
+
+// 조회 전에  콤보박스 선택된 값 가져오기 
+
+                    SearchItem.EcomOrderStatus = SearchItem.EcomOrderStatusCombo.AsEnumerable()
+                                                    .Where(x => x.Field<string>("COM_NM") == OrderStatusSelectedValue)
+                                                    .Select(x => x.Field<string>("COM_CD")).FirstOrDefault().ToString();
+
+
